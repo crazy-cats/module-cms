@@ -1,0 +1,13 @@
+{
+    "name": "crazycat/module-cms",
+    "description": "CrazyCat CMS module",
+    "type": "crazycat-module",
+    "require": {
+        "crazycat/framework": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "CrazyCat\\Cms\\": "code/"
+        }
+    }
+}
