@@ -3,7 +3,10 @@
     "description": "CrazyCat CMS module",
     "type": "crazycat-module",
     "require": {
-        "crazycat/framework": "dev-master"
+        "crazycat/framework": "*"
+    },
+    "require-dev": {
+        "crazycat/framework": "master@dev"
     },
     "autoload": {
         "psr-4": {
