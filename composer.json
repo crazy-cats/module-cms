@@ -3,9 +3,6 @@
     "description": "CrazyCat CMS module",
     "type": "crazycat-module",
     "require": {
-        "crazycat/framework": "*"
-    },
-    "require-dev": {
         "crazycat/framework": "master@dev"
     },
     "autoload": {
