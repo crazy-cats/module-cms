@@ -8,6 +8,9 @@
     "autoload": {
         "psr-4": {
             "CrazyCat\\Cms\\": "code/"
-        }
+        },
+        "files": [
+            "registration.php"
+        ]
     }
 }
