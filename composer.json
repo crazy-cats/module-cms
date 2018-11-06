@@ -2,15 +2,15 @@
     "name": "crazycat/module-cms",
     "description": "CrazyCat CMS module",
     "type": "crazycat-module",
+    "license": [
+        "proprietary"
+    ],
     "require": {
-        "crazycat/framework": "1.0.0"
+        "crazycat/framework": "dev-master"
     },
     "autoload": {
         "psr-4": {
             "CrazyCat\\Cms\\": "code/"
-        },
-        "files": [
-            "registration.php"
-        ]
+        }
     }
 }
