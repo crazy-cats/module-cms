@@ -12,5 +12,6 @@
  * @link http://crazy-cat.co
  */
 return [
+    'namespace' => 'CrazyCat\Cms',
     'depends' => []
 ];
