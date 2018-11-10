@@ -34,7 +34,8 @@ class Index extends \CrazyCat\Framework\App\Module\Controller\Cli\AbstractAction
      */
     public function run( InputInterface $input, OutputInterface $output )
     {
-        $output->writeln( 'Hello world' );
+        $output->writeln( __( 'This is a test.' ) );
+        $output->writeln( __( 'This is a CMS.' ) );
     }
 
 }
