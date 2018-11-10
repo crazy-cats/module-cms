@@ -5,19 +5,19 @@
  * See COPYRIGHT.txt for license details.
  */
 
+namespace CrazyCat\Cms\Controller\Frontend\Page;
+
 /**
  * @category CrazyCat
  * @package CrazyCat\Cms
  * @author Bruce Z <152416319@qq.com>
  * @link http://crazy-cat.co
  */
-return [
-    'namespace' => 'CrazyCat\Cms',
-    'depends' => [],
-    'routes' => [
-        'api' => 'cms',
-        'frontend' => 'cms',
-        'backend' => 'cms',
-        'cli' => 'cms'
-    ]
-];
+class View extends \CrazyCat\Framework\App\Module\Controller\AbstractAction {
+
+    public function execute()
+    {
+        
+    }
+
+}
