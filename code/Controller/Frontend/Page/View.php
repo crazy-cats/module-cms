@@ -13,9 +13,9 @@ namespace CrazyCat\Cms\Controller\Frontend\Page;
  * @author Bruce Z <152416319@qq.com>
  * @link http://crazy-cat.co
  */
-class View extends \CrazyCat\Framework\App\Module\Controller\AbstractAction {
+class View extends \CrazyCat\Framework\App\Module\Controller\Frontend\AbstractAction {
 
-    public function execute()
+    protected function run()
     {
         
     }

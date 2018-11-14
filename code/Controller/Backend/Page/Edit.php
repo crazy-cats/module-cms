@@ -15,7 +15,7 @@ namespace CrazyCat\Cms\Controller\Backend\Page;
  */
 class Edit extends \CrazyCat\Framework\App\Module\Controller\Backend\AbstractAction {
 
-    public function execute()
+    protected function run()
     {
         
     }
