@@ -5,20 +5,19 @@
  * See COPYRIGHT.txt for license details.
  */
 
+namespace CrazyCat\Cms\Setup;
+
 /**
  * @category CrazyCat
  * @package CrazyCat\Cms
  * @author Bruce Z <152416319@qq.com>
  * @link http://crazy-cat.co
  */
-return [
-    'namespace' => 'CrazyCat\Cms',
-    'version' => '1.0.0',
-    'depends' => [],
-    'routes' => [
-        'api' => 'cms',
-        'frontend' => 'cms',
-        'backend' => 'cms',
-        'cli' => 'cms'
-    ]
-];
+class Upgrade {
+
+    public function execute()
+    {
+        
+    }
+
+}
