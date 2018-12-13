@@ -12,11 +12,18 @@
  * @link http://crazy-cat.co
  */
 return [
-        [
-        'label' => __( 'CMS' ), 'identifier' => 'cms',
+    'cms' => [
+        'label' => __( 'CMS' ),
+        'sort_order' => 1,
         'children' => [
-                [ 'label' => __( 'CMS Blocks' ), 'identifier' => 'cms/block/index', 'url' => getUrl( 'cms/block' ) ],
-                [ 'label' => __( 'CMS Pages' ), 'identifier' => 'cms/page/index', 'url' => getUrl( 'cms/page' ) ]
-        ],
-        'sort_order' => 1 ]
+            'cms/block/index' => [
+                'label' => __( 'CMS Blocks' ),
+                'url' => getUrl( 'cms/block' )
+            ],
+            'cms/page/index' => [
+                'label' => __( 'CMS Pages' ),
+                'url' => getUrl( 'cms/page' )
+            ]
+        ]
+    ]
 ];
