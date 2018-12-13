@@ -15,7 +15,7 @@ return [
     'namespace' => 'CrazyCat\Cms',
     'version' => '1.0.0',
     'depends' => [
-        'CrazyCat\View'
+        'CrazyCat\AppFront'
     ],
     'routes' => [
         'frontend' => 'cms',
