@@ -5,7 +5,7 @@
  * See COPYRIGHT.txt for license details.
  */
 
-namespace CrazyCat\Cms\Controller\Frontend\Page;
+namespace CrazyCat\Cms\Model;
 
 /**
  * @category CrazyCat
@@ -13,11 +13,14 @@ namespace CrazyCat\Cms\Controller\Frontend\Page;
  * @author Bruce Z <152416319@qq.com>
  * @link http://crazy-cat.co
  */
-class View extends \CrazyCat\Framework\App\Module\Controller\Frontend\AbstractAction {
+class Block extends \CrazyCat\Framework\App\Module\Model\AbstractModel {
 
-    protected function run()
+    /**
+     * @return void
+     */
+    protected function construct()
     {
-        $this->render();
+        $this->init( 'cms_block', 'cms_block' );
     }
 
 }

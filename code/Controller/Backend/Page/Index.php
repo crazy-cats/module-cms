@@ -5,7 +5,7 @@
  * See COPYRIGHT.txt for license details.
  */
 
-namespace CrazyCat\Cms\Controller\Frontend\Page;
+namespace CrazyCat\Cms\Controller\Backend\Page;
 
 /**
  * @category CrazyCat
@@ -13,11 +13,11 @@ namespace CrazyCat\Cms\Controller\Frontend\Page;
  * @author Bruce Z <152416319@qq.com>
  * @link http://crazy-cat.co
  */
-class View extends \CrazyCat\Framework\App\Module\Controller\Frontend\AbstractAction {
+class Index extends \CrazyCat\Framework\App\Module\Controller\Backend\AbstractAction {
 
     protected function run()
     {
-        $this->render();
+        $this->setPageTitle( __( 'CMS Page List' ) )->render();
     }
 
 }

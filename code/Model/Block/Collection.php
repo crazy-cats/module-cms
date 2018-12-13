@@ -5,20 +5,19 @@
  * See COPYRIGHT.txt for license details.
  */
 
+namespace CrazyCat\Cms\Model\Block;
+
 /**
  * @category CrazyCat
  * @package CrazyCat\Cms
  * @author Bruce Z <152416319@qq.com>
  * @link http://crazy-cat.co
  */
-return [
-    'namespace' => 'CrazyCat\Cms',
-    'version' => '1.0.0',
-    'depends' => [
-        'CrazyCat\View'
-    ],
-    'routes' => [
-        'frontend' => 'cms',
-        'backend' => 'cms'
-    ]
-];
+class Collection extends \CrazyCat\Framework\App\Module\Model\AbstractCollection {
+
+    protected function construct()
+    {
+        $this->init( 'CrazyCat\Cms\Model\Block' );
+    }
+
+}

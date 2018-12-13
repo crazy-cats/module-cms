@@ -12,13 +12,10 @@
  * @link http://crazy-cat.co
  */
 return [
-    'namespace' => 'CrazyCat\Cms',
-    'version' => '1.0.0',
-    'depends' => [
-        'CrazyCat\View'
-    ],
-    'routes' => [
-        'frontend' => 'cms',
-        'backend' => 'cms'
+    'template' => '1column',
+    'blocks' => [
+        'main' => [
+                [ 'class' => 'CrazyCat\Cms\Block\Page' ]
+        ]
     ]
 ];

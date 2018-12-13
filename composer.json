@@ -14,7 +14,12 @@
         }
     ],
     "require": {
-        "crazycat/framework": "~1.0"
+        "crazycat/framework": "~1.0",
+        "crazycat/module-view": "~1.0"
+    },
+    "require-dev": {
+        "crazycat/framework": "dev-master",
+        "crazycat/module-view": "dev-master"
     },
     "autoload": {
         "psr-4": {

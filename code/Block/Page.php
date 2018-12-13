@@ -5,20 +5,14 @@
  * See COPYRIGHT.txt for license details.
  */
 
+namespace CrazyCat\Cms\Block;
+
 /**
  * @category CrazyCat
  * @package CrazyCat\Cms
  * @author Bruce Z <152416319@qq.com>
  * @link http://crazy-cat.co
  */
-return [
-    'namespace' => 'CrazyCat\Cms',
-    'version' => '1.0.0',
-    'depends' => [
-        'CrazyCat\View'
-    ],
-    'routes' => [
-        'frontend' => 'cms',
-        'backend' => 'cms'
-    ]
-];
+class Page extends \CrazyCat\Framework\App\Module\Block\AbstractBlock {
+    
+}
