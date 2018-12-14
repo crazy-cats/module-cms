@@ -14,8 +14,7 @@
         }
     ],
     "require": {
-        "crazycat/framework": "~1.0",
-        "crazycat/module-appfront": "~1.0"
+        "crazycat/framework": "~1.0"
     },
     "require-dev": {
         "crazycat/framework": "dev-master",
