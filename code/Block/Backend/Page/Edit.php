@@ -7,6 +7,8 @@
 
 namespace CrazyCat\Cms\Block\Backend\Page;
 
+use CrazyCat\Core\Model\Source\Stage as SourceStage;
+
 /**
  * @category CrazyCat
  * @package CrazyCat\Cms
@@ -25,8 +27,10 @@ class Edit extends \CrazyCat\Framework\App\Module\Block\Backend\AbstractEdit {
                 [ 'name' => 'title', 'label' => __( 'Title' ), 'type' => 'text', 'validation' => [ 'required' => true ] ],
                 [ 'name' => 'identifier', 'label' => __( 'Identifier' ), 'type' => 'text', 'validation' => [ 'required' => true ] ],
                 [ 'name' => 'enabled', 'label' => __( 'Enabled' ), 'type' => 'select', 'options' => [ [ 'value' => '1', 'label' => __( 'Yes' ) ], [ 'value' => '0', 'label' => __( 'No' ) ] ] ],
-                [ 'name' => 'view_id', 'label' => __( 'View' ), 'type' => 'select', 'options' => [] ],
-                [ 'name' => 'content', 'label' => __( 'Content' ), 'type' => 'textarea' ]
+                [ 'name' => 'stage_id', 'label' => __( 'View' ), 'type' => 'select', 'source' => SourceStage::class ],
+                [ 'name' => 'content', 'label' => __( 'Content' ), 'type' => 'textarea' ],
+                [ 'name' => 'sort_order', 'label' => __( 'Sort Order' ), 'type' => 'text' ],
+                [ 'name' => 'layout', 'label' => __( 'Layout' ), 'type' => 'textarea' ]
         ];
     }
 
@@ -35,7 +39,7 @@ class Edit extends \CrazyCat\Framework\App\Module\Block\Backend\AbstractEdit {
      */
     public function getActionUrl()
     {
-        return getUrl( 'cms/block/save' );
+        return getUrl( 'cms/page/save' );
     }
 
 }

@@ -7,7 +7,7 @@
 
 namespace CrazyCat\Cms\Controller\Backend\Page;
 
-use CrazyCat\Cms\Model\Block as Model;
+use CrazyCat\Cms\Model\Page as Model;
 
 /**
  * @category CrazyCat
@@ -33,8 +33,8 @@ class Edit extends \CrazyCat\Framework\App\Module\Controller\Backend\AbstractAct
         $this->registry->register( 'current_model', $model );
 
         $pageTitle = $model->getId() ?
-                __( 'Edit CMS Block `%1` [ ID: %2 ]', [ $model->getName(), $model->getId() ] ) :
-                __( 'Create CMS Block' );
+                __( 'Edit CMS Page `%1` [ ID: %2 ]', [ $model->getName(), $model->getId() ] ) :
+                __( 'Create CMS Page' );
 
         $this->setPageTitle( $pageTitle )->render();
     }

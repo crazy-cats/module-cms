@@ -7,6 +7,8 @@
 
 namespace CrazyCat\Cms\Block\Backend\Block;
 
+use CrazyCat\Core\Model\Source\Stage as SourceStage;
+
 /**
  * @category CrazyCat
  * @package CrazyCat\Cms
@@ -25,7 +27,7 @@ class Edit extends \CrazyCat\Framework\App\Module\Block\Backend\AbstractEdit {
                 [ 'name' => 'title', 'label' => __( 'Title' ), 'type' => 'text', 'validation' => [ 'required' => true ] ],
                 [ 'name' => 'identifier', 'label' => __( 'Identifier' ), 'type' => 'text', 'validation' => [ 'required' => true ] ],
                 [ 'name' => 'enabled', 'label' => __( 'Enabled' ), 'type' => 'select', 'options' => [ [ 'value' => '1', 'label' => __( 'Yes' ) ], [ 'value' => '0', 'label' => __( 'No' ) ] ] ],
-                [ 'name' => 'view_id', 'label' => __( 'View' ), 'type' => 'select', 'options' => [] ],
+                [ 'name' => 'stage_id', 'label' => __( 'Stage' ), 'type' => 'select', 'source' => SourceStage::class ],
                 [ 'name' => 'content', 'label' => __( 'Content' ), 'type' => 'textarea' ]
         ];
     }
