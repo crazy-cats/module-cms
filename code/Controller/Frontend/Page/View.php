@@ -7,6 +7,8 @@
 
 namespace CrazyCat\Cms\Controller\Frontend\Page;
 
+use CrazyCat\Cms\Model\Page as Model;
+
 /**
  * @category CrazyCat
  * @package CrazyCat\Cms
@@ -17,6 +19,9 @@ class View extends \CrazyCat\Framework\App\Module\Controller\Frontend\AbstractAc
 
     protected function run()
     {
+        $id = $this->request->getParam( 'id' );
+        $model = $this->objectManager->create( Model::class )->load( $id );
+        $this->registry->register( 'currnet_page', $model );
         $this->render();
     }
 

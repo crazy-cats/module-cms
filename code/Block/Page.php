@@ -14,5 +14,12 @@ namespace CrazyCat\Cms\Block;
  * @link http://crazy-cat.co
  */
 class Page extends \CrazyCat\Framework\App\Module\Block\AbstractBlock {
-    
+
+    protected $template = 'CrazyCat\Cms::page';
+
+    public function getPage()
+    {
+        return $this->registry->registry( 'currnet_page' );
+    }
+
 }
