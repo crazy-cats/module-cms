@@ -31,7 +31,7 @@ class Edit extends \CrazyCat\Core\Block\Backend\AbstractEdit {
                         [ 'name' => 'identifier', 'label' => __( 'Identifier' ), 'type' => 'text', 'validation' => [ 'required' => true ] ],
                         [ 'name' => 'enabled', 'label' => __( 'Enabled' ), 'type' => 'select', 'options' => [ [ 'value' => '1', 'label' => __( 'Yes' ) ], [ 'value' => '0', 'label' => __( 'No' ) ] ] ],
                         [ 'name' => 'stage_id', 'label' => __( 'Stage' ), 'type' => 'select', 'source' => SourceStage::class ],
-                        [ 'name' => 'content', 'label' => __( 'Content' ), 'type' => 'textarea' ]
+                        [ 'name' => 'content', 'label' => __( 'Content' ), 'type' => 'editor' ]
                 ]
             ]
         ];
