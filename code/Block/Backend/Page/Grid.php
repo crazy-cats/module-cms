@@ -13,7 +13,7 @@ namespace CrazyCat\Cms\Block\Backend\Page;
  * @author Bruce Z <152416319@qq.com>
  * @link http://crazy-cat.co
  */
-class Grid extends \CrazyCat\Framework\App\Module\Block\Backend\AbstractGrid {
+class Grid extends \CrazyCat\Core\Block\Backend\AbstractGrid {
 
     const BOOKMARK_KEY = 'cms_page';
 
