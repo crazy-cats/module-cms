@@ -7,6 +7,9 @@
 
 namespace CrazyCat\Cms\Model\Page;
 
+use CrazyCat\Core\Model\Stage\Manager as StageManager;
+use CrazyCat\Framework\App\Area;
+
 /**
  * @category CrazyCat
  * @package CrazyCat\Cms
