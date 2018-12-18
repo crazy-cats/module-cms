@@ -23,13 +23,29 @@ class Collection extends \CrazyCat\Framework\App\Module\Model\AbstractCollection
         $this->init( 'CrazyCat\Cms\Model\Block' );
     }
 
+    /**
+     * @return void
+     */
     protected function beforeLoad()
     {
         if ( $this->objectManager->get( Area::class )->getCode() === Area::CODE_FRONTEND ) {
             $stage = $this->objectManager->get( StageManager::class )->getCurrentStage();
-            $this->addFieldToFilter( 'stage_id', [ 'finset' => $stage->getId() ] );
+            $this->addFieldToFilter( 'stage_ids', [ 'finset' => $stage->getId() ] );
         }
+
         parent::beforeLoad();
+    }
+
+    /**
+     * @return void
+     */
+    protected function afterLoad()
+    {
+        parent::afterLoad();
+
+        foreach ( $this->items as &$item ) {
+            $item->setData( 'stage_ids', explode( ',', $item->getData( 'stage_ids' ) ) );
+        }
     }
 
 }

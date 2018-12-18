@@ -35,7 +35,7 @@ class Grid extends \CrazyCat\Core\Controller\Backend\AbstractGridAction {
         $sourceYesNo = $this->objectManager->get( SourceYesNo::class );
         foreach ( $collectionData['items'] as &$item ) {
             $item['enabled'] = $sourceYesNo->getLabel( $item['enabled'] );
-            $item['stage_id'] = $sourceStage->getLabel( $item['stage_id'] );
+            $item['stage_ids'] = $sourceStage->getLabel( $item['stage_ids'] );
         }
         return $collectionData;
     }

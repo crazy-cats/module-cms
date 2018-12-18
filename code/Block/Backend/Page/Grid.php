@@ -28,7 +28,7 @@ class Grid extends \CrazyCat\Core\Block\Backend\AbstractGrid {
                 [ 'name' => 'title', 'label' => __( 'Page Title' ), 'sort' => true, 'filter' => [ 'type' => 'text', 'condition' => 'like' ] ],
                 [ 'name' => 'identifier', 'label' => __( 'Identifier' ), 'sort' => true, 'filter' => [ 'type' => 'text', 'condition' => 'like' ] ],
                 [ 'name' => 'enabled', 'label' => __( 'Enabled' ), 'sort' => true, 'width' => 130, 'filter' => [ 'type' => 'select', 'condition' => 'eq' ] ],
-                [ 'name' => 'stage_id', 'label' => __( 'View' ), 'sort' => true, 'width' => 130, 'filter' => [ 'type' => 'select', 'condition' => 'eq' ] ],
+                [ 'name' => 'stage_ids', 'label' => __( 'Stage' ), 'sort' => true, 'width' => 130, 'filter' => [ 'type' => 'select', 'condition' => 'eq' ] ],
                 [ 'label' => __( 'Actions' ), 'actions' => [
                         [ 'name' => 'edit', 'label' => __( 'Edit' ), 'url' => getUrl( 'cms/page/edit' ) ],
                         [ 'name' => 'delete', 'label' => __( 'Delete' ), 'confirm' => __( 'Sure you want to remove this item?' ), 'url' => getUrl( 'cms/page/delete' ) ]
