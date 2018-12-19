@@ -13,7 +13,7 @@ namespace CrazyCat\Cms\Model;
  * @author Bruce Z <152416319@qq.com>
  * @link http://crazy-cat.co
  */
-class Block extends \CrazyCat\Framework\App\Module\Model\AbstractModel {
+class Block extends \CrazyCat\Framework\App\Module\Model\AbstractLangModel {
 
     /**
      * @return void
@@ -29,12 +29,6 @@ class Block extends \CrazyCat\Framework\App\Module\Model\AbstractModel {
     protected function beforeSave()
     {
         parent::beforeSave();
-
-        $now = date( 'Y-m-d H:i:s' );
-        $this->setData( 'updated_at', $now );
-        if ( !$this->getId() ) {
-            $this->setData( 'created_at', $now );
-        }
 
         if ( isset( $this->data['stage_ids'] ) && is_array( $this->data['stage_ids'] ) ) {
             $this->data['stage_ids'] = implode( ',', $this->data['stage_ids'] );

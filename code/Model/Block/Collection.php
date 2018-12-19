@@ -16,7 +16,7 @@ use CrazyCat\Framework\App\Area;
  * @author Bruce Z <152416319@qq.com>
  * @link http://crazy-cat.co
  */
-class Collection extends \CrazyCat\Framework\App\Module\Model\AbstractCollection {
+class Collection extends \CrazyCat\Framework\App\Module\Model\AbstractLangCollection {
 
     protected function construct()
     {
