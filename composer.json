@@ -17,8 +17,7 @@
         "crazycat/framework": "~1.0"
     },
     "require-dev": {
-        "crazycat/framework": "dev-master",
-        "crazycat/module-appfront": "dev-master"
+        "crazycat/framework": "dev-master"
     },
     "autoload": {
         "psr-4": {
