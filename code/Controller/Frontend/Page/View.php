@@ -19,9 +19,24 @@ class View extends \CrazyCat\Framework\App\Module\Controller\Frontend\AbstractAc
 
     protected function run()
     {
-        $id = $this->request->getParam( 'id' );
+        if ( !( $id = $this->request->getParam( 'id' ) ) ) {
+            
+        }
+
+        /* @var $model \CrazyCat\Cms\Model\Page */
         $model = $this->objectManager->create( Model::class )->load( $id );
+
+        if ( !$model->getId() ) {
+            
+        }
+
         $this->registry->register( 'currnet_page', $model );
+
+        $this->setPageTitle( $model->getData( 'title' ) )
+                ->setMetaDescription( $model->getData( 'meta_description' ) )
+                ->setMetaKeywords( $model->getData( 'meta_keywords' ) )
+                ->setMetaRobots( $model->getData( 'meta_robots' ) );
+
         $this->render();
     }
 
