@@ -1,6 +1,6 @@
 {
     "name": "crazycat/module-cms",
-    "description": "CrazyCat CMS module",
+    "description": "CrazyCat Module - CMS",
     "type": "crazycat-module",
     "license": [
         "proprietary"
