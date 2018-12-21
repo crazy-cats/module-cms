@@ -63,9 +63,7 @@ class Upgrade extends \CrazyCat\Framework\App\Module\Setup\AbstractUpgrade {
                 [ 'columns' => [ 'identifier' ], 'type' => MySql::INDEX_NORMAL ],
                 [ 'columns' => [ 'enabled' ], 'type' => MySql::INDEX_NORMAL ],
                 [ 'columns' => [ 'stage_ids' ], 'type' => MySql::INDEX_NORMAL ],
-                [ 'columns' => [ 'sort_order' ], 'type' => MySql::INDEX_NORMAL ],
-                [ 'columns' => [ 'title' ], 'type' => MySql::INDEX_FULLTEXT ],
-                [ 'columns' => [ 'content' ], 'type' => MySql::INDEX_FULLTEXT ]
+                [ 'columns' => [ 'sort_order' ], 'type' => MySql::INDEX_NORMAL ]
         ];
         $this->conn->createTable( 'cms_page', $columns, $indexes );
     }
