@@ -14,7 +14,7 @@
 return [
     'cms' => [
         'label' => __( 'CMS' ),
-        'sort_order' => 1,
+        'sort_order' => 100,
         'children' => [
             'cms/block/index' => [
                 'label' => __( 'CMS Blocks' ),
