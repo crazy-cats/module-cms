@@ -12,7 +12,7 @@ use CrazyCat\Framework\App\Url;
 
 /**
  * @category CrazyCat
- * @package CrazyCat\Admin
+ * @package CrazyCat\Cms
  * @author Bruce Z <152416319@qq.com>
  * @link http://crazy-cat.co
  */
