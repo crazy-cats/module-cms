@@ -42,7 +42,7 @@ class Edit extends \CrazyCat\Core\Block\Backend\AbstractEdit {
                 'fields' => [
                         [ 'name' => 'meta_keywords', 'label' => __( 'Meta Keywords' ), 'type' => 'text' ],
                         [ 'name' => 'meta_description', 'label' => __( 'Meta Description' ), 'type' => 'textarea' ],
-                        [ 'name' => 'meta_robots', 'label' => __( 'Meta Robots' ), 'type' => 'select', 'source' => SourceMetaRobots::class ]
+                        [ 'name' => 'meta_robots', 'label' => __( 'Robots' ), 'type' => 'select', 'source' => SourceMetaRobots::class ]
                 ]
             ],
             'design' => [

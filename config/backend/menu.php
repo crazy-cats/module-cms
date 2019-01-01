@@ -13,15 +13,15 @@
  */
 return [
     'cms' => [
-        'label' => __( 'CMS' ),
+        'label' => 'CMS',
         'sort_order' => 100,
         'children' => [
             'cms/block/index' => [
-                'label' => __( 'CMS Blocks' ),
+                'label' => 'CMS Blocks',
                 'url' => getUrl( 'cms/block' )
             ],
             'cms/page/index' => [
-                'label' => __( 'CMS Pages' ),
+                'label' => 'CMS Pages',
                 'url' => getUrl( 'cms/page' )
             ]
         ]
