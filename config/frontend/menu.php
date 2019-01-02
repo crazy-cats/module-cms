@@ -13,8 +13,8 @@
  */
 return [
     'cms' => [
-        'label' => __( 'CMS' ),
+        'label' => 'CMS',
         'params_generating_url' => 'cms/menu/pages',
-        'item_data_generator' => ''
+        'item_data_generator' => 'CrazyCat\Cms\Model\Menu\ItemDataGenerator'
     ]
 ];
