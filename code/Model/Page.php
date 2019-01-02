@@ -40,7 +40,9 @@ class Page extends \CrazyCat\Framework\App\Module\Model\AbstractLangModel {
      */
     protected function afterLoad()
     {
-        $this->data['stage_ids'] = explode( ',', $this->data['stage_ids'] );
+        if ( isset( $this->data['stage_ids'] ) ) {
+            $this->data['stage_ids'] = explode( ',', $this->data['stage_ids'] );
+        }
 
         parent::afterLoad();
     }

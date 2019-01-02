@@ -33,9 +33,11 @@ class ItemDataGenerator extends \CrazyCat\Menu\Model\ItemDataGenerator {
 
         $items = [];
         foreach ( $pageCollection as $page ) {
+            $url = $this->url->getUrl( 'cms/page/view', [ 'id' => $page->getId() ] );
             $items[] = new Object( [
                 'title' => $page->getData( 'title' ),
-                'url' => getUrl( 'cms/page/view', [ 'id' => $page->getId() ] ),
+                'url' => $url,
+                'is_current' => $this->url->isCurrent( $url ),
                 'level' => $menuItem->getData( 'level' ) ] );
         }
 
