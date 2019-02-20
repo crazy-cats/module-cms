@@ -8,7 +8,7 @@
 namespace CrazyCat\Cms\Model\Menu;
 
 use CrazyCat\Cms\Model\Page\Collection as PageCollection;
-use CrazyCat\Framework\Data\Object as DataObject;
+use CrazyCat\Framework\Data\DataObject;
 use CrazyCat\Framework\Utility\StaticVariable;
 use CrazyCat\Menu\Model\Menu\Item as MenuItem;
 
@@ -22,7 +22,7 @@ class ItemDataGenerator extends \CrazyCat\Menu\Model\ItemDataGenerator {
 
     /**
      * @param \CrazyCat\Menu\Model\Menu\Item $menuItem
-     * @return \CrazyCat\Framework\Data\Object[]
+     * @return \CrazyCat\Framework\Data\DataObject[]
      */
     public function generateItems( MenuItem $menuItem )
     {
