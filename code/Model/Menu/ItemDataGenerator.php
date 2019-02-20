@@ -8,7 +8,7 @@
 namespace CrazyCat\Cms\Model\Menu;
 
 use CrazyCat\Cms\Model\Page\Collection as PageCollection;
-use CrazyCat\Framework\Data\Object;
+use CrazyCat\Framework\Data\Object as DataObject;
 use CrazyCat\Framework\Utility\StaticVariable;
 use CrazyCat\Menu\Model\Menu\Item as MenuItem;
 
@@ -34,7 +34,7 @@ class ItemDataGenerator extends \CrazyCat\Menu\Model\ItemDataGenerator {
         $items = [];
         foreach ( $pageCollection as $page ) {
             $url = $this->url->getUrl( 'cms/page/view', [ 'id' => $page->getId() ] );
-            $items[] = new Object( [
+            $items[] = new DataObject( [
                 'title' => $page->getData( 'title' ),
                 'url' => $url,
                 'is_current' => $this->url->isCurrent( $url ),
