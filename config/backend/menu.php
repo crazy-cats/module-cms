@@ -18,11 +18,11 @@ return [
         'children' => [
             'cms/block/index' => [
                 'label' => 'CMS Blocks',
-                'url' => getUrl( 'cms/block' )
+                'url' => 'cms/block'
             ],
             'cms/page/index' => [
                 'label' => 'CMS Pages',
-                'url' => getUrl( 'cms/page' )
+                'url' => 'cms/page'
             ]
         ]
     ]
