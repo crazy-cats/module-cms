@@ -1,41 +1,79 @@
 <?php
 
 /*
- * Copyright © 2018 CrazyCat, Inc. All rights reserved.
+ * Copyright © 2020 CrazyCat, Inc. All rights reserved.
  * See COPYRIGHT.txt for license details.
  */
 
-namespace CrazyCat\Cms\Block\Backend\Block;
+namespace CrazyCat\Content\Block\Backend\Block;
 
-use CrazyCat\Core\Model\Source\Stage as SourceStage;
-use CrazyCat\Core\Model\Source\YesNo as SourceYesNo;
+use CrazyCat\Base\Model\Source\Stage as SourceStage;
+use CrazyCat\Base\Model\Source\YesNo as SourceYesNo;
 
 /**
  * @category CrazyCat
- * @package CrazyCat\Cms
- * @author Bruce Z <152416319@qq.com>
- * @link http://crazy-cat.co
+ * @package  CrazyCat\Content
+ * @author   Liwei Zeng <zengliwei@163.com>
+ * @link     https://crazy-cat.cn
  */
-class Grid extends \CrazyCat\Core\Block\Backend\AbstractGrid {
-
-    const BOOKMARK_KEY = 'cms_block';
+class Grid extends \CrazyCat\Base\Block\Backend\AbstractGrid
+{
+    public const BOOKMARK_KEY = 'content_block';
 
     /**
      * @return array
+     * @throws \ReflectionException
      */
     public function getFields()
     {
         return [
-                [ 'ids' => true, ],
-                [ 'name' => 'id', 'label' => __( 'ID' ), 'sort' => true, 'width' => 100, 'filter' => [ 'type' => 'text', 'condition' => 'eq' ] ],
-                [ 'name' => 'title', 'label' => __( 'Block Title' ), 'sort' => true, 'filter' => [ 'type' => 'text', 'condition' => 'like' ] ],
-                [ 'name' => 'identifier', 'label' => __( 'Identifier' ), 'sort' => true, 'filter' => [ 'type' => 'text', 'condition' => 'like' ] ],
-                [ 'name' => 'stage_ids', 'label' => __( 'Stages' ), 'sort' => true, 'width' => 200, 'filter' => [ 'type' => 'select', 'source' => SourceStage::class, 'condition' => 'finset' ] ],
-                [ 'name' => 'enabled', 'label' => __( 'Enabled' ), 'sort' => true, 'width' => 130, 'filter' => [ 'type' => 'select', 'source' => SourceYesNo::class, 'condition' => 'eq' ] ],
-                [ 'label' => __( 'Actions' ), 'actions' => [
-                        [ 'name' => 'edit', 'label' => __( 'Edit' ), 'url' => getUrl( 'cms/block/edit' ) ],
-                        [ 'name' => 'delete', 'label' => __( 'Delete' ), 'confirm' => __( 'Sure you want to remove this item?' ), 'url' => getUrl( 'cms/block/delete' ) ]
-                ] ] ];
+            ['ids' => true,],
+            [
+                'name'   => 'id',
+                'label'  => __('ID'),
+                'sort'   => true,
+                'width'  => 100,
+                'filter' => ['type' => 'text', 'condition' => 'eq']
+            ],
+            [
+                'name'   => 'title',
+                'label'  => __('Block Title'),
+                'sort'   => true,
+                'filter' => ['type' => 'text', 'condition' => 'like']
+            ],
+            [
+                'name'   => 'identifier',
+                'label'  => __('Identifier'),
+                'sort'   => true,
+                'filter' => ['type' => 'text', 'condition' => 'like']
+            ],
+            [
+                'name'   => 'stage_ids',
+                'label'  => __('Stages'),
+                'sort'   => true,
+                'width'  => 200,
+                'filter' => ['type' => 'select', 'source' => SourceStage::class, 'condition' => 'finset']
+            ],
+            [
+                'name'   => 'enabled',
+                'label'  => __('Enabled'),
+                'sort'   => true,
+                'width'  => 130,
+                'filter' => ['type' => 'select', 'source' => SourceYesNo::class, 'condition' => 'eq']
+            ],
+            [
+                'label'   => __('Actions'),
+                'actions' => [
+                    ['name' => 'edit', 'label' => __('Edit'), 'url' => $this->getUrl('content/block/edit')],
+                    [
+                        'name'    => 'delete',
+                        'label'   => __('Delete'),
+                        'confirm' => __('Sure you want to remove this item?'),
+                        'url'     => $this->getUrl('content/block/delete')
+                    ]
+                ]
+            ]
+        ];
     }
 
     /**
@@ -43,7 +81,6 @@ class Grid extends \CrazyCat\Core\Block\Backend\AbstractGrid {
      */
     public function getSourceUrl()
     {
-        return getUrl( 'cms/block/grid' );
+        return $this->getUrl('content/block/grid');
     }
-
 }

@@ -1,25 +1,24 @@
 <?php
 
 /*
- * Copyright © 2018 CrazyCat, Inc. All rights reserved.
+ * Copyright © 2020 CrazyCat, Inc. All rights reserved.
  * See COPYRIGHT.txt for license details.
  */
 
-namespace CrazyCat\Cms\Block;
+namespace CrazyCat\Content\Block;
 
 /**
  * @category CrazyCat
- * @package CrazyCat\Cms
- * @author Bruce Z <152416319@qq.com>
- * @link http://crazy-cat.co
+ * @package  CrazyCat\Content
+ * @author   Liwei Zeng <zengliwei@163.com>
+ * @link     https://crazy-cat.cn
  */
-class Page extends \CrazyCat\Framework\App\Module\Block\AbstractBlock {
-
-    protected $template = 'CrazyCat\Cms::page';
+class Page extends \CrazyCat\Framework\App\Component\Module\Block\AbstractBlock
+{
+    protected $template = 'CrazyCat\Content::page';
 
     public function getPage()
     {
-        return $this->registry->registry( 'currnet_page' );
+        return $this->registry->registry('current_page');
     }
-
 }

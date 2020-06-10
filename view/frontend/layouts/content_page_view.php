@@ -12,15 +12,10 @@
  * @link     https://crazy-cat.cn
  */
 return [
-    'namespace' => 'CrazyCat\Content',
-    'depends'   => [
-        'CrazyCat\Base'
-    ],
-    'routes'    => [
-        'frontend' => 'content',
-        'backend'  => 'content'
-    ],
-    'setup'     => [
-        'CrazyCat\Content\Setup\Install'
+    'template' => '1column',
+    'blocks'   => [
+        'main' => [
+            ['class' => 'CrazyCat\Content\Block\Page']
+        ]
     ]
 ];

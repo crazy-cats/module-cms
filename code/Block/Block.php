@@ -1,28 +1,27 @@
 <?php
 
 /*
- * Copyright © 2018 CrazyCat, Inc. All rights reserved.
+ * Copyright © 2020 CrazyCat, Inc. All rights reserved.
  * See COPYRIGHT.txt for license details.
  */
 
-namespace CrazyCat\Cms\Block;
+namespace CrazyCat\Content\Block;
 
-use CrazyCat\Cms\Model\Block\Collection;
-use CrazyCat\Framework\App\ObjectManager;
+use CrazyCat\Content\Model\Block\Collection;
 use CrazyCat\Framework\App\Theme\Block\Context;
 
 /**
  * @category CrazyCat
- * @package CrazyCat\Cms
- * @author Bruce Z <152416319@qq.com>
- * @link http://crazy-cat.co
+ * @package  CrazyCat\Content
+ * @author   Liwei Zeng <zengliwei@163.com>
+ * @link     https://crazy-cat.cn
  */
-class Block extends \CrazyCat\Framework\App\Module\Block\AbstractBlock {
-
-    protected $template = 'CrazyCat\Cms::block';
+class Block extends \CrazyCat\Framework\App\Component\Module\Block\AbstractBlock
+{
+    protected $template = 'CrazyCat\Content::block';
 
     /**
-     * @var \CrazyCat\Cms\Model\Block
+     * @var \CrazyCat\Content\Model\Block
      */
     protected $blockModel;
 
@@ -31,36 +30,40 @@ class Block extends \CrazyCat\Framework\App\Module\Block\AbstractBlock {
      */
     protected $objectManager;
 
-    public function __construct( ObjectManager $objectManager, Context $context, array $data = [] )
-    {
-        parent::__construct( $context, $data );
+    public function __construct(
+        \CrazyCat\Framework\App\ObjectManager $objectManager,
+        \CrazyCat\Framework\App\Theme\Block\Context $context,
+        array $data = []
+    ) {
+        parent::__construct($context, $data);
 
         $this->objectManager = $objectManager;
     }
 
     /**
-     * @return \CrazyCat\Cms\Model\Block|null
+     * @return \CrazyCat\Content\Model\Block|null
+     * @throws \ReflectionException
      */
     public function getBlock()
     {
-        if ( $this->blockModel === null ) {
-            $this->blockModel = $this->objectManager->create( Collection::class )
-                    ->addFieldToFilter( 'identifier', [ 'eq' => $this->getData( 'identifier' ) ] )
-                    ->setPageSize( 1 )
-                    ->getFirstItem();
+        if ($this->blockModel === null) {
+            $this->blockModel = $this->objectManager->create(Collection::class)
+                ->addFieldToFilter('identifier', ['eq' => $this->getData('identifier')])
+                ->setPageSize(1)
+                ->getFirstItem();
         }
         return $this->blockModel;
     }
 
     /**
      * @return string
+     * @throws \ReflectionException
      */
     public function toHtml()
     {
-        if ( $this->getBlock() === null ) {
+        if ($this->getBlock() === null) {
             return '';
         }
         return parent::toHtml();
     }
-
 }

@@ -1,43 +1,45 @@
 <?php
 
 /*
- * Copyright © 2018 CrazyCat, Inc. All rights reserved.
+ * Copyright © 2020 CrazyCat, Inc. All rights reserved.
  * See COPYRIGHT.txt for license details.
  */
 
-namespace CrazyCat\Cms\Controller\Frontend\Page;
+namespace CrazyCat\Content\Controller\Frontend\Page;
 
-use CrazyCat\Cms\Model\Page as Model;
+use CrazyCat\Content\Model\Page as Model;
 
 /**
  * @category CrazyCat
- * @package CrazyCat\Cms
- * @author Bruce Z <152416319@qq.com>
- * @link http://crazy-cat.co
+ * @package  CrazyCat\Content
+ * @author   Liwei Zeng <zengliwei@163.com>
+ * @link     https://crazy-cat.cn
  */
-class View extends \CrazyCat\Framework\App\Module\Controller\Frontend\AbstractAction {
-
-    protected function run()
+class View extends \CrazyCat\Framework\App\Component\Module\Controller\Frontend\AbstractAction
+{
+    /**
+     * @return void
+     * @throws \ReflectionException
+     * @throws \Exception
+     */
+    protected function execute()
     {
-        if ( !( $id = $this->request->getParam( 'id' ) ) ) {
-            
+        if (!($id = $this->request->getParam('id'))) {
         }
 
-        /* @var $model \CrazyCat\Cms\Model\Page */
-        $model = $this->objectManager->create( Model::class )->load( $id );
+        /* @var $model \CrazyCat\Content\Model\Page */
+        $model = $this->objectManager->create(Model::class)->load($id);
 
-        if ( !$model->getId() ) {
-            
+        if (!$model->getId()) {
         }
 
-        $this->registry->register( 'currnet_page', $model );
+        $this->registry->register('current_page', $model);
 
-        $this->setPageTitle( $model->getData( 'title' ) )
-                ->setMetaDescription( $model->getData( 'meta_description' ) )
-                ->setMetaKeywords( $model->getData( 'meta_keywords' ) )
-                ->setMetaRobots( $model->getData( 'meta_robots' ) );
+        $this->setPageTitle($model->getData('title'))
+            ->setMetaDescription($model->getData('meta_description'))
+            ->setMetaKeywords($model->getData('meta_keywords'))
+            ->setMetaRobots($model->getData('meta_robots'));
 
         $this->render();
     }
-
 }

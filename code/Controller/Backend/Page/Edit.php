@@ -1,42 +1,41 @@
 <?php
 
 /*
- * Copyright © 2018 CrazyCat, Inc. All rights reserved.
+ * Copyright © 2020 CrazyCat, Inc. All rights reserved.
  * See COPYRIGHT.txt for license details.
  */
 
-namespace CrazyCat\Cms\Controller\Backend\Page;
+namespace CrazyCat\Content\Controller\Backend\Page;
 
-use CrazyCat\Cms\Model\Page as Model;
+use CrazyCat\Content\Model\Page as Model;
 
 /**
  * @category CrazyCat
- * @package CrazyCat\Cms
- * @author Bruce Z <152416319@qq.com>
- * @link http://crazy-cat.co
+ * @package  CrazyCat\Content
+ * @author   Liwei Zeng <zengliwei@163.com>
+ * @link     https://crazy-cat.cn
  */
-class Edit extends \CrazyCat\Framework\App\Module\Controller\Backend\AbstractAction {
-
-    protected function run()
+class Edit extends \CrazyCat\Framework\App\Component\Module\Controller\Backend\AbstractAction
+{
+    protected function execute()
     {
-        /* @var $model \CrazyCat\Framework\App\Module\Model\AbstractModel */
-        $model = $this->objectManager->create( Model::class );
+        /* @var $model \CrazyCat\Framework\App\Component\Module\Model\AbstractModel */
+        $model = $this->objectManager->create(Model::class);
 
-        if ( ( $id = $this->request->getParam( 'id' ) ) ) {
-            $model->load( $id );
-            if ( !$model->getId() ) {
-                $this->messenger->addError( __( 'Item with specified ID does not exist.' ) );
-                return $this->redirect( 'cms/block' );
+        if (($id = $this->request->getParam('id'))) {
+            $model->load($id);
+            if (!$model->getId()) {
+                $this->messenger->addError(__('Item with specified ID does not exist.'));
+                return $this->redirect('content/block');
             }
         }
 
-        $this->registry->register( 'current_model', $model );
+        $this->registry->register('current_model', $model);
 
         $pageTitle = $model->getId() ?
-                __( 'Edit CMS Page `%1` [ ID: %2 ]', [ $model->getData( 'title' ), $model->getId() ] ) :
-                __( 'Create CMS Page' );
+            __('Edit Content Page `%1` [ ID: %2 ]', [$model->getData('title'), $model->getId()]) :
+            __('Create Content Page');
 
-        $this->setPageTitle( $pageTitle )->render();
+        $this->setPageTitle($pageTitle)->render();
     }
-
 }
