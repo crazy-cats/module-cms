@@ -13,7 +13,7 @@ namespace CrazyCat\Content\Model;
  * @author   Liwei Zeng <zengliwei@163.com>
  * @link     https://crazy-cat.cn
  */
-class Block extends \CrazyCat\Framework\App\Component\Module\Model\AbstractLangModel
+class Block extends \CrazyCat\Base\Model\AbstractLangModel
 {
     /**
      * @return void

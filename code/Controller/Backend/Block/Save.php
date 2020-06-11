@@ -8,7 +8,7 @@
 namespace CrazyCat\Content\Controller\Backend\Block;
 
 use CrazyCat\Content\Model\Block as Model;
-use CrazyCat\Framework\App\Url;
+use CrazyCat\Framework\App\Io\Http\Url;
 
 /**
  * @category CrazyCat

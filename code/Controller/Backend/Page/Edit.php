@@ -19,7 +19,7 @@ class Edit extends \CrazyCat\Framework\App\Component\Module\Controller\Backend\A
 {
     protected function execute()
     {
-        /* @var $model \CrazyCat\Framework\App\Component\Module\Model\AbstractModel */
+        /* @var $model \CrazyCat\Base\Model\AbstractLangModel */
         $model = $this->objectManager->create(Model::class);
 
         if (($id = $this->request->getParam('id'))) {

@@ -13,10 +13,11 @@ namespace CrazyCat\Content\Model;
  * @author   Liwei Zeng <zengliwei@163.com>
  * @link     https://crazy-cat.cn
  */
-class Page extends \CrazyCat\Framework\App\Component\Module\Model\AbstractLangModel
+class Page extends \CrazyCat\Base\Model\AbstractLangModel
 {
     /**
      * @return void
+     * @throws \ReflectionException
      */
     protected function construct()
     {

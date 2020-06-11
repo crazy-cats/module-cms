@@ -8,7 +8,7 @@
 namespace CrazyCat\Content\Controller\Backend\Page;
 
 use CrazyCat\Content\Model\Page as Model;
-use CrazyCat\Framework\App\Url;
+use CrazyCat\Framework\App\Io\Http\Url;
 
 /**
  * @category CrazyCat
