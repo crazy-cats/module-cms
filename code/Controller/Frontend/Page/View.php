@@ -8,6 +8,7 @@
 namespace CrazyCat\Content\Controller\Frontend\Page;
 
 use CrazyCat\Content\Model\Page as Model;
+use CrazyCat\Framework\App\Io\Http\Url;
 
 /**
  * @category CrazyCat
@@ -24,12 +25,11 @@ class View extends \CrazyCat\Framework\App\Component\Module\Controller\Frontend\
      */
     protected function execute()
     {
-        if (!($id = $this->request->getParam('id'))) {
+        if (!($id = $this->request->getParam(Url::ID_NAME))) {
         }
 
         /* @var $model \CrazyCat\Content\Model\Page */
         $model = $this->objectManager->create(Model::class)->load($id);
-
         if (!$model->getId()) {
         }
 
