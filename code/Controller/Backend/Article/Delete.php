@@ -5,9 +5,9 @@
  * See COPYRIGHT.txt for license details.
  */
 
-namespace CrazyCat\Content\Controller\Backend\Block;
+namespace CrazyCat\Content\Controller\Backend\Article;
 
-use CrazyCat\Content\Model\Block as Model;
+use CrazyCat\Content\Model\Article as Model;
 use CrazyCat\Framework\App\Io\Http\Response;
 
 /**

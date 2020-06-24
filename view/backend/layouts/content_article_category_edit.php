@@ -20,22 +20,22 @@ return [
                 'data'  => [
                     'template' => 'CrazyCat\Base::header_buttons',
                     'buttons'  => [
-                        'delete' => [
-                            'label'  => __('Mass Delete'),
-                            'action' => [
-                                'type'    => 'massDelete',
-                                'confirm' => __('Sure you want to remove selected item(s)?'),
-                                'params'  => [
-                                    'target' => '#grid-form',
-                                    'action' => getUrl('content/page/massdelete')
-                                ]
-                            ]
-                        ],
-                        'new'    => [
-                            'label'  => __('Create New'),
+                        'back'          => [
+                            'label'  => __('Back'),
                             'action' => [
                                 'type'   => 'redirect',
-                                'params' => ['url' => getUrl('content/page/edit')]
+                                'params' => ['url' => getUrl('content/article_category')]
+                            ]
+                        ],
+                        'save'          => [
+                            'label'  => __('Save'),
+                            'action' => ['type' => 'save', 'params' => ['target' => '#edit-form']]
+                        ],
+                        'save_continue' => [
+                            'label'  => __('Save and Continue'),
+                            'action' => [
+                                'type'   => 'saveContinue',
+                                'params' => ['target' => '#edit-form']
                             ]
                         ]
                     ]
@@ -43,8 +43,8 @@ return [
             ]
         ],
         'main'   => [
-            'gird-form' => [
-                'class' => 'CrazyCat\Content\Block\Backend\Page\Grid'
+            'edit-form' => [
+                'class' => 'CrazyCat\Content\Block\Backend\ArticleCategory\Edit'
             ]
         ]
     ]

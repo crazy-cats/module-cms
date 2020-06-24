@@ -5,9 +5,9 @@
  * See COPYRIGHT.txt for license details.
  */
 
-namespace CrazyCat\Content\Controller\Backend\Page;
+namespace CrazyCat\Content\Controller\Backend\ArticleCategory;
 
-use CrazyCat\Content\Model\Page as Model;
+use CrazyCat\Content\Model\Article\Category as Model;
 use CrazyCat\Framework\App\Io\Http\Response;
 
 /**
@@ -23,7 +23,7 @@ class Delete extends \CrazyCat\Framework\App\Component\Module\Controller\Backend
         $success = false;
 
         if (!($id = $this->request->getParam('id'))) {
-            $message = __('Please specifiy an item.');
+            $message = __('Please specify an item.');
         } else {
             /* @var $model \CrazyCat\Base\Model\AbstractLangModel */
             $model = $this->objectManager->create(Model::class)->load($id);

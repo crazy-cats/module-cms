@@ -4,14 +4,14 @@
  * See COPYRIGHT.txt for license details.
  */
 
-/* @var $this \CrazyCat\Content\Block\Page */
-$page = $this->getPage();
+/* @var $this \CrazyCat\Content\Block\Article */
+$article = $this->getArticle();
 ?>
-<div class="block block-content-page">
+<div class="block block-content-article">
     <div class="block-title">
-        <h1><?= $page->getData('title'); ?></h1>
+        <h1><?= $article->getData('title'); ?></h1>
     </div>
     <div class="block-content">
-        <?= $page->getData('content'); ?>
+        <?= $article->getData('content'); ?>
     </div>
 </div>

@@ -5,10 +5,10 @@
  * See COPYRIGHT.txt for license details.
  */
 
-namespace CrazyCat\Content\Controller\Backend\Page;
+namespace CrazyCat\Content\Controller\Backend\Article;
 
-use CrazyCat\Content\Block\Backend\Page\Grid as GridBlock;
-use CrazyCat\Content\Model\Page\Collection;
+use CrazyCat\Content\Block\Backend\Article\Grid as GridBlock;
+use CrazyCat\Content\Model\Article\Collection;
 use CrazyCat\Base\Model\Source\Stage as SourceStage;
 use CrazyCat\Base\Model\Source\YesNo as SourceYesNo;
 

@@ -12,9 +12,9 @@
  * @link     https://crazy-cat.cn
  */
 return [
-    'content' => [
-        'label'                 => 'Contents',
-        'params_generating_url' => 'content/menu/pages',
-        'item_data_generator'   => 'CrazyCat\Content\Model\Menu\ItemDataGenerator'
+    'article_category' => [
+        'label'                 => 'Article Category',
+        'params_generating_url' => 'content/menu/article_categories',
+        'item_data_generator'   => 'CrazyCat\Content\Model\Article\Category\ItemDataGenerator'
     ]
 ];

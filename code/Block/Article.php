@@ -13,12 +13,12 @@ namespace CrazyCat\Content\Block;
  * @author   Liwei Zeng <zengliwei@163.com>
  * @link     https://crazy-cat.cn
  */
-class Page extends \CrazyCat\Framework\App\Component\Module\Block\AbstractBlock
+class Article extends \CrazyCat\Framework\App\Component\Module\Block\AbstractBlock
 {
-    protected $template = 'CrazyCat\Content::page';
+    protected $template = 'CrazyCat\Content::article';
 
-    public function getPage()
+    public function getArticle()
     {
-        return $this->registry->registry('current_page');
+        return $this->registry->registry('current_article');
     }
 }

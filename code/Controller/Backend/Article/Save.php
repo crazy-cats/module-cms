@@ -5,9 +5,9 @@
  * See COPYRIGHT.txt for license details.
  */
 
-namespace CrazyCat\Content\Controller\Backend\Page;
+namespace CrazyCat\Content\Controller\Backend\Article;
 
-use CrazyCat\Content\Model\Page as Model;
+use CrazyCat\Content\Model\Article as Model;
 use CrazyCat\Framework\App\Io\Http\Url;
 
 /**
@@ -37,8 +37,8 @@ class Save extends \CrazyCat\Framework\App\Component\Module\Controller\Backend\A
         }
 
         if (!$this->request->getPost('to_list') && $id !== null) {
-            return $this->redirect('content/page/edit', [Url::ID_NAME => $id]);
+            return $this->redirect('content/article/edit', [Url::ID_NAME => $id]);
         }
-        return $this->redirect('content/page');
+        return $this->redirect('content/article');
     }
 }

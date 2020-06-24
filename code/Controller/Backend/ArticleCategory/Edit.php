@@ -5,9 +5,9 @@
  * See COPYRIGHT.txt for license details.
  */
 
-namespace CrazyCat\Content\Controller\Backend\Page;
+namespace CrazyCat\Content\Controller\Backend\ArticleCategory;
 
-use CrazyCat\Content\Model\Page as Model;
+use CrazyCat\Content\Model\Article\Category as Model;
 
 /**
  * @category CrazyCat
@@ -26,16 +26,16 @@ class Edit extends \CrazyCat\Framework\App\Component\Module\Controller\Backend\A
             $model->load($id);
             if (!$model->getId()) {
                 $this->messenger->addError(__('Item with specified ID does not exist.'));
-                return $this->redirect('content/block');
+                return $this->redirect('content/article_category');
             }
         }
 
         $this->registry->register('current_model', $model);
 
-        $pageTitle = $model->getId() ?
-            __('Edit Content Page `%1` [ ID: %2 ]', [$model->getData('title'), $model->getId()]) :
-            __('Create Content Page');
+        $categoryTitle = $model->getId() ?
+            __('Edit Article Category `%1` [ ID: %2 ]', [$model->getData('name'), $model->getId()]) :
+            __('Create Article Category');
 
-        $this->setPageTitle($pageTitle)->render();
+        $this->setPageTitle($categoryTitle)->render();
     }
 }

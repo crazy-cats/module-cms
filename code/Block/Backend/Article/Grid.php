@@ -5,7 +5,7 @@
  * See COPYRIGHT.txt for license details.
  */
 
-namespace CrazyCat\Content\Block\Backend\Page;
+namespace CrazyCat\Content\Block\Backend\Article;
 
 use CrazyCat\Base\Model\Source\Stage as SourceStage;
 use CrazyCat\Base\Model\Source\YesNo as SourceYesNo;
@@ -18,7 +18,7 @@ use CrazyCat\Base\Model\Source\YesNo as SourceYesNo;
  */
 class Grid extends \CrazyCat\Base\Block\Backend\AbstractGrid
 {
-    public const BOOKMARK_KEY = 'content_page';
+    public const BOOKMARK_KEY = 'article';
 
     /**
      * @return array
@@ -37,7 +37,7 @@ class Grid extends \CrazyCat\Base\Block\Backend\AbstractGrid
             ],
             [
                 'name'   => 'title',
-                'label'  => __('Page Title'),
+                'label'  => __('Article Title'),
                 'sort'   => true,
                 'filter' => ['type' => 'text', 'condition' => 'like']
             ],
@@ -67,13 +67,13 @@ class Grid extends \CrazyCat\Base\Block\Backend\AbstractGrid
                     [
                         'name'  => 'edit',
                         'label' => __('Edit'),
-                        'url'   => $this->getUrl('content/page/edit')
+                        'url'   => $this->getUrl('content/article/edit')
                     ],
                     [
                         'name'    => 'delete',
                         'label'   => __('Delete'),
                         'confirm' => __('Sure you want to remove this item?'),
-                        'url'     => $this->getUrl('content/page/delete')
+                        'url'     => $this->getUrl('content/article/delete')
                     ]
                 ]
             ]
@@ -85,6 +85,6 @@ class Grid extends \CrazyCat\Base\Block\Backend\AbstractGrid
      */
     public function getSourceUrl()
     {
-        return $this->getUrl('content/page/grid');
+        return $this->getUrl('content/article/grid');
     }
 }

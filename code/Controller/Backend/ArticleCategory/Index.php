@@ -5,7 +5,7 @@
  * See COPYRIGHT.txt for license details.
  */
 
-namespace CrazyCat\Content\Controller\Backend\Page;
+namespace CrazyCat\Content\Controller\Backend\ArticleCategory;
 
 /**
  * @category CrazyCat
@@ -21,6 +21,6 @@ class Index extends \CrazyCat\Framework\App\Component\Module\Controller\Backend\
      */
     protected function execute()
     {
-        $this->setPageTitle(__('Content Page List'))->render();
+        $this->setPageTitle(__('Article Category List'))->render();
     }
 }

@@ -15,7 +15,7 @@ return [
     'template' => '1column',
     'blocks'   => [
         'main' => [
-            ['class' => 'CrazyCat\Content\Block\Page']
+            ['class' => 'CrazyCat\Content\Block\Article']
         ]
     ]
 ];

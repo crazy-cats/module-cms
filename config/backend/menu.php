@@ -16,13 +16,17 @@ return [
         'label'      => 'Contents',
         'sort_order' => 100,
         'children'   => [
-            'content/block/index' => [
-                'label' => 'Content Blocks',
+            'content/block/index'            => [
+                'label' => 'Blocks',
                 'url'   => 'content/block'
             ],
-            'content/page/index'  => [
-                'label' => 'Content Pages',
-                'url'   => 'content/page'
+            'content/article/index'          => [
+                'label' => 'Articles',
+                'url'   => 'content/article'
+            ],
+            'content/article_category/index' => [
+                'label' => 'Article Categories',
+                'url'   => 'content/article_category'
             ]
         ]
     ]

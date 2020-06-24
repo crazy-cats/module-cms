@@ -5,11 +5,12 @@
  * See COPYRIGHT.txt for license details.
  */
 
-namespace CrazyCat\Content\Block\Backend\Page;
+namespace CrazyCat\Content\Block\Backend\ArticleCategory;
 
 use CrazyCat\Base\Model\Source\MetaRobots as SourceMetaRobots;
 use CrazyCat\Base\Model\Source\Stage as SourceStage;
 use CrazyCat\Base\Model\Source\YesNo as SourceYesNo;
+use CrazyCat\Content\Model\Source\ArticleCategory as SourceCategory;
 
 /**
  * @category CrazyCat
@@ -35,8 +36,8 @@ class Edit extends \CrazyCat\Base\Block\Backend\AbstractEdit
                         'type'  => 'hidden'
                     ],
                     [
-                        'name'       => 'title',
-                        'label'      => __('Title'),
+                        'name'       => 'name',
+                        'label'      => __('Category Name'),
                         'type'       => 'text',
                         'validation' => ['required' => true]
                     ],
@@ -59,8 +60,17 @@ class Edit extends \CrazyCat\Base\Block\Backend\AbstractEdit
                         'source' => SourceStage::class
                     ],
                     [
-                        'name'  => 'content',
-                        'label' => __('Content'),
+                        'name'    => 'parent_id',
+                        'label'   => __('Parent'),
+                        'type'    => 'select',
+                        'options' => $this->objectManager->create(
+                            SourceCategory::class,
+                            ['includeId' => $this->getModel()->getId()]
+                        )->toOptionArray()
+                    ],
+                    [
+                        'name'  => 'description',
+                        'label' => __('Description'),
                         'type'  => 'editor'
                     ],
                     [
@@ -111,6 +121,6 @@ class Edit extends \CrazyCat\Base\Block\Backend\AbstractEdit
      */
     public function getActionUrl()
     {
-        return $this->getUrl('content/page/save');
+        return $this->getUrl('content/article_category/save');
     }
 }

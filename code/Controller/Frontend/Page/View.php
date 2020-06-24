@@ -5,9 +5,9 @@
  * See COPYRIGHT.txt for license details.
  */
 
-namespace CrazyCat\Content\Controller\Frontend\Page;
+namespace CrazyCat\Content\Controller\Frontend\Article;
 
-use CrazyCat\Content\Model\Page as Model;
+use CrazyCat\Content\Model\Article as Model;
 use CrazyCat\Framework\App\Io\Http\Url;
 
 /**
@@ -28,12 +28,12 @@ class View extends \CrazyCat\Framework\App\Component\Module\Controller\Frontend\
         if (!($id = $this->request->getParam(Url::ID_NAME))) {
         }
 
-        /* @var $model \CrazyCat\Content\Model\Page */
+        /* @var $model \CrazyCat\Content\Model\Article */
         $model = $this->objectManager->create(Model::class)->load($id);
         if (!$model->getId()) {
         }
 
-        $this->registry->register('current_page', $model);
+        $this->registry->register('current_article', $model);
 
         $this->setPageTitle($model->getData('title'))
             ->setMetaDescription($model->getData('meta_description'))

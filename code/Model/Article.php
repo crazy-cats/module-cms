@@ -13,7 +13,7 @@ namespace CrazyCat\Content\Model;
  * @author   Liwei Zeng <zengliwei@163.com>
  * @link     https://crazy-cat.cn
  */
-class Page extends \CrazyCat\Base\Model\AbstractLangModel
+class Article extends \CrazyCat\Base\Model\AbstractLangModel
 {
     /**
      * @return void
@@ -21,7 +21,7 @@ class Page extends \CrazyCat\Base\Model\AbstractLangModel
      */
     protected function construct()
     {
-        $this->init('content_page', 'content_page');
+        $this->init('article', 'article');
     }
 
     /**
@@ -35,6 +35,9 @@ class Page extends \CrazyCat\Base\Model\AbstractLangModel
         if (isset($this->data['stage_ids']) && is_array($this->data['stage_ids'])) {
             $this->data['stage_ids'] = implode(',', $this->data['stage_ids']);
         }
+        if (isset($this->data['category_ids']) && is_array($this->data['category_ids'])) {
+            $this->data['category_ids'] = implode(',', $this->data['category_ids']);
+        }
     }
 
     /**
@@ -45,6 +48,9 @@ class Page extends \CrazyCat\Base\Model\AbstractLangModel
     {
         if (isset($this->data['stage_ids'])) {
             $this->data['stage_ids'] = explode(',', $this->data['stage_ids']);
+        }
+        if (isset($this->data['category_ids'])) {
+            $this->data['category_ids'] = explode(',', $this->data['category_ids']);
         }
 
         parent::afterLoad();

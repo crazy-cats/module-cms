@@ -5,7 +5,7 @@
  * See COPYRIGHT.txt for license details.
  */
 
-namespace CrazyCat\Content\Model\Page;
+namespace CrazyCat\Content\Model\Article\Category;
 
 use CrazyCat\Base\Model\Stage\Manager as StageManager;
 use CrazyCat\Framework\App\Area;
@@ -24,7 +24,7 @@ class Collection extends \CrazyCat\Framework\App\Component\Module\Model\Abstract
      */
     protected function construct()
     {
-        $this->init(\CrazyCat\Content\Model\Page::class);
+        $this->init(\CrazyCat\Content\Model\Article\Category::class);
     }
 
     /**

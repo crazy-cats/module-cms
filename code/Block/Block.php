@@ -8,7 +8,7 @@
 namespace CrazyCat\Content\Block;
 
 use CrazyCat\Content\Model\Block\Collection;
-use CrazyCat\Framework\App\Theme\Block\Context;
+use CrazyCat\Framework\App\Component\Theme\Block\Context;
 
 /**
  * @category CrazyCat
@@ -32,7 +32,7 @@ class Block extends \CrazyCat\Framework\App\Component\Module\Block\AbstractBlock
 
     public function __construct(
         \CrazyCat\Framework\App\ObjectManager $objectManager,
-        \CrazyCat\Framework\App\Theme\Block\Context $context,
+        \CrazyCat\Framework\App\Component\Theme\Block\Context $context,
         array $data = []
     ) {
         parent::__construct($context, $data);
@@ -49,7 +49,7 @@ class Block extends \CrazyCat\Framework\App\Component\Module\Block\AbstractBlock
         if ($this->blockModel === null) {
             $this->blockModel = $this->objectManager->create(Collection::class)
                 ->addFieldToFilter('identifier', ['eq' => $this->getData('identifier')])
-                ->setPageSize(1)
+                ->setArticleSize(1)
                 ->getFirstItem();
         }
         return $this->blockModel;

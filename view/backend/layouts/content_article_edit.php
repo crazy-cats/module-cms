@@ -22,7 +22,7 @@ return [
                     'buttons'  => [
                         'back'          => [
                             'label'  => __('Back'),
-                            'action' => ['type' => 'redirect', 'params' => ['url' => getUrl('content/page')]]
+                            'action' => ['type' => 'redirect', 'params' => ['url' => getUrl('content/article')]]
                         ],
                         'save'          => [
                             'label'  => __('Save'),
@@ -41,7 +41,7 @@ return [
         ],
         'main'   => [
             'edit-form' => [
-                'class' => 'CrazyCat\Content\Block\Backend\Page\Edit'
+                'class' => 'CrazyCat\Content\Block\Backend\Article\Edit'
             ]
         ]
     ]
