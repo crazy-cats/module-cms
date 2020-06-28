@@ -29,36 +29,35 @@ class UpdateArticleUrlRewrites
     }
 
     /**
-     * @param $observer
-     * @return void
+     * @param $model
+     * @return array
      */
-    public function execute($observer)
+    private function collectOrgRewrites($model)
     {
-        $model = $observer->getData('model');
-        if (!$model->getData('enabled')) {
-            return;
-        }
-        if (!$model->hasData('stage_ids')) {
-            return;
-        }
-
         $orgUrlRewriteData = [];
-        $stageIds = explode(',', $model->getData('stage_ids'));
-        $tblUrlRewrite = $this->conn->getTableName('url_rewrite');
         $sql = sprintf(
             'SELECT * FROM `%s` WHERE `target_path` = ? AND `entity_id` = ?',
-            $tblUrlRewrite
+            $this->conn->getTableName('url_rewrite')
         );
         $urlRewrites = $this->conn->fetchAll($sql, ['content/article/view', $model->getId()]);
         foreach ($urlRewrites as $urlRewrite) {
             $orgUrlRewriteData[$urlRewrite['stage_id'] . '-' . $urlRewrite['request_path']] = $urlRewrite;
         }
+        return $orgUrlRewriteData;
+    }
 
+    /**
+     * @param $model
+     * @return array
+     */
+    private function collectNewRewrites($model)
+    {
         $newUrlRewriteData = [];
+        $stageIds = explode(',', $model->getData('stage_ids'));
         foreach ($stageIds as $stageId) {
-            $newUrlRewriteData[$stageId . '-' . $model->getData('identifier')] = [
+            $newUrlRewriteData[$stageId . '-' . $model->getData('identifier') . '.html'] = [
                 'stage_id'     => $stageId,
-                'request_path' => $model->getData('identifier'),
+                'request_path' => $model->getData('identifier') . '.html',
                 'target_path'  => 'content/article/view',
                 'entity_id'    => $model->getId(),
                 'params'       => json_encode([Url::ID_NAME => $model->getId()])
@@ -97,7 +96,7 @@ class UpdateArticleUrlRewrites
                             },
                             explode('/', $categoryPath)
                         )
-                    ) . '/' . $model->getData('identifier');
+                    ) . '/' . $model->getData('identifier') . '.html';
                 foreach ($stageIds as $stageId) {
                     $newUrlRewriteData[$stageId . '-' . $requestPath] = [
                         'stage_id'     => $stageId,
@@ -109,11 +108,61 @@ class UpdateArticleUrlRewrites
                 }
             }
         }
+        return $newUrlRewriteData;
+    }
+
+    /**
+     * @param array $data
+     * @throws \ReflectionException
+     */
+    private function checkDuplicatedRewrites($data)
+    {
+        $newRequestPaths = [];
+        foreach ($data as $rewrite) {
+            $newRequestPaths[] = $rewrite['request_path'];
+        }
+        $sql = sprintf(
+            'SELECT `request_path` FROM `%s` ' .
+            'WHERE `target_path` != \'content/article/view\' AND `request_path` IN (%s)',
+            $this->conn->getTableName('url_rewrite'),
+            implode(',', array_fill(0, count($newRequestPaths), '?'))
+        );
+        $existRequestPaths = $this->conn->fetchCol($sql, $newRequestPaths);
+        if (count($existRequestPaths)) {
+            throw new \Exception(
+                __(
+                    'URL rewrite record with this request path already exists: %1.',
+                    [implode(', ', $existRequestPaths)]
+                )
+            );
+        }
+    }
+
+    /**
+     * @param $observer
+     * @return void
+     * @throws \Exception
+     */
+    public function execute($observer)
+    {
+        $model = $observer->getData('model');
+        if (!$model->getData('enabled')) {
+            return;
+        }
+        if (!$model->hasData('stage_ids')) {
+            return;
+        }
+
+        $orgUrlRewriteData = $this->collectOrgRewrites($model);
+        $newUrlRewriteData = $this->collectNewRewrites($model);
+
+        $this->checkDuplicatedRewrites($newUrlRewriteData);
 
         $toRemoveData = array_diff_key($orgUrlRewriteData, $newUrlRewriteData);
         $toAddData = array_diff_key($newUrlRewriteData, $orgUrlRewriteData);
         $toUpdateData = array_intersect_key($orgUrlRewriteData, $newUrlRewriteData);
 
+        $tblUrlRewrite = $this->conn->getTableName('url_rewrite');
         if (!empty($toRemoveData)) {
             $toRemoveUrlRewriteIds = [];
             foreach ($toRemoveData as $data) {
@@ -124,8 +173,8 @@ class UpdateArticleUrlRewrites
             $this->conn->insertArray($tblUrlRewrite, $toAddData);
         }
         if (!empty($toUpdateData)) {
-            foreach ($toUpdateData as $data) {
-                $this->conn->update($tblUrlRewrite, $data, ['id = ?' => $data['id']]);
+            foreach ($toUpdateData as $key => $data) {
+                $this->conn->update($tblUrlRewrite, $newUrlRewriteData[$key], ['id = ?' => $data['id']]);
             }
         }
     }

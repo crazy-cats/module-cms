@@ -65,6 +65,33 @@ class UpdateArticleCategoryUrlRewrites
     }
 
     /**
+     * @param array $data
+     * @throws \ReflectionException
+     */
+    private function checkDuplicatedRewrites($data)
+    {
+        $newRequestPaths = [];
+        foreach ($data as $rewrite) {
+            $newRequestPaths[] = $rewrite['request_path'];
+        }
+        $sql = sprintf(
+            'SELECT `request_path` FROM `%s` ' .
+            'WHERE `target_path` != \'content/article_category/view\' AND `request_path` IN (%s)',
+            $this->conn->getTableName('url_rewrite'),
+            implode(',', array_fill(0, count($newRequestPaths), '?'))
+        );
+        $existRequestPaths = $this->conn->fetchCol($sql, $newRequestPaths);
+        if (count($existRequestPaths)) {
+            throw new \Exception(
+                __(
+                    'URL rewrite record with this request path already exists: %1.',
+                    [implode(', ', $existRequestPaths)]
+                )
+            );
+        }
+    }
+
+    /**
      * @param $observer
      * @return void
      * @throws \Exception
@@ -83,13 +110,15 @@ class UpdateArticleCategoryUrlRewrites
         $stageIds = explode(',', $model->getData('stage_ids'));
         foreach ($stageIds as $stageId) {
             $data[] = [
-                'stage_id' => $stageId,
+                'stage_id'     => $stageId,
                 'request_path' => $this->getParentPath($model) . $model->getData('identifier'),
-                'target_path' => 'content/article_category/view',
-                'entity_id' => $model->getId(),
-                'params' => json_encode([Url::ID_NAME => $model->getId()])
+                'target_path'  => 'content/article_category/view',
+                'entity_id'    => $model->getId(),
+                'params'       => json_encode([Url::ID_NAME => $model->getId()])
             ];
         }
+
+        $this->checkDuplicatedRewrites($data);
 
         $this->conn->insertUpdate(
             $this->conn->getTableName('url_rewrite'),

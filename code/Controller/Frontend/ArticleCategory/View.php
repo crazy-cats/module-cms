@@ -7,7 +7,7 @@
 
 namespace CrazyCat\Content\Controller\Frontend\ArticleCategory;
 
-use CrazyCat\Content\Model\Article as Model;
+use CrazyCat\Content\Model\Article\Category as Model;
 use CrazyCat\Framework\App\Io\Http\Url;
 
 /**
@@ -35,7 +35,7 @@ class View extends \CrazyCat\Framework\App\Component\Module\Controller\Frontend\
 
         $this->registry->register('current_article', $model);
 
-        $this->setPageTitle($model->getData('title'))
+        $this->setPageTitle($model->getData('name'))
             ->setMetaDescription($model->getData('meta_description'))
             ->setMetaKeywords($model->getData('meta_keywords'))
             ->setMetaRobots($model->getData('meta_robots'));

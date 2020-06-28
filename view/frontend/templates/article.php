@@ -7,7 +7,7 @@
 /* @var $this \CrazyCat\Content\Block\Article */
 $article = $this->getArticle();
 ?>
-<div class="block block-content-article">
+<div class="block block-article">
     <div class="block-title">
         <h1><?= $article->getData('title'); ?></h1>
     </div>
