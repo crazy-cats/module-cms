@@ -7,6 +7,8 @@
 
 namespace CrazyCat\Content\Observer;
 
+use CrazyCat\Framework\App\Io\Http\Url;
+
 /**
  * @category CrazyCat
  * @package  CrazyCat\Content
@@ -59,7 +61,7 @@ class UpdateArticleUrlRewrites
                 'request_path' => $model->getData('identifier'),
                 'target_path'  => 'content/article/view',
                 'entity_id'    => $model->getId(),
-                'params'       => null
+                'params'       => json_encode([Url::ID_NAME => $model->getId()])
             ];
         }
         if ($model->hasData('category_ids')) {
@@ -102,7 +104,7 @@ class UpdateArticleUrlRewrites
                         'request_path' => $requestPath,
                         'target_path'  => 'content/article/view',
                         'entity_id'    => $model->getId(),
-                        'params'       => json_encode(['cid' => $categoryId])
+                        'params'       => json_encode(['cid' => $categoryId, Url::ID_NAME => $model->getId()])
                     ];
                 }
             }

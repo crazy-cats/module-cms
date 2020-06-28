@@ -7,6 +7,8 @@
 
 namespace CrazyCat\Content\Observer;
 
+use CrazyCat\Framework\App\Io\Http\Url;
+
 /**
  * @category CrazyCat
  * @package  CrazyCat\Content
@@ -81,13 +83,18 @@ class UpdateArticleCategoryUrlRewrites
         $stageIds = explode(',', $model->getData('stage_ids'));
         foreach ($stageIds as $stageId) {
             $data[] = [
-                'stage_id'     => $stageId,
+                'stage_id' => $stageId,
                 'request_path' => $this->getParentPath($model) . $model->getData('identifier'),
-                'target_path'  => 'content/article_category/view',
-                'entity_id'    => $model->getId()
+                'target_path' => 'content/article_category/view',
+                'entity_id' => $model->getId(),
+                'params' => json_encode([Url::ID_NAME => $model->getId()])
             ];
         }
 
-        $this->conn->insertUpdate($this->conn->getTableName('url_rewrite'), $data, ['target_path', 'entity_id']);
+        $this->conn->insertUpdate(
+            $this->conn->getTableName('url_rewrite'),
+            $data,
+            ['target_path', 'entity_id', 'params']
+        );
     }
 }

@@ -14,7 +14,8 @@
 return [
     'namespace' => 'CrazyCat\Content',
     'depends'   => [
-        'CrazyCat\Base'
+        'CrazyCat\Base',
+        'CrazyCat\UrlRewrite'
     ],
     'routes'    => [
         'frontend' => 'content',
