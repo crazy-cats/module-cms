@@ -12,5 +12,6 @@
  * @link     https://crazy-cat.cn
  */
 return [
-    'article_save_after' => 'CrazyCat\Content\Observer\UpdateArticleUrlRewrites'
+    'article_save_after'          => 'CrazyCat\Content\Observer\UpdateArticleUrlRewrites',
+    'article_category_save_after' => 'CrazyCat\Content\Observer\UpdateArticleCategoryUrlRewrites'
 ];

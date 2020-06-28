@@ -32,41 +32,38 @@ class UpdateArticleUrlRewrites
      */
     public function execute($observer)
     {
-        $modArticle = $observer->getData('model');
-
-        if (!$modArticle->getData('enabled')) {
+        $model = $observer->getData('model');
+        if (!$model->getData('enabled')) {
             return;
         }
-
-        if (!$modArticle->hasData('stage_ids')) {
+        if (!$model->hasData('stage_ids')) {
             return;
         }
-        $stageIds = explode(',', $modArticle->getData('stage_ids'));
-
 
         $orgUrlRewriteData = [];
+        $stageIds = explode(',', $model->getData('stage_ids'));
         $tblUrlRewrite = $this->conn->getTableName('url_rewrite');
         $sql = sprintf(
             'SELECT * FROM `%s` WHERE `target_path` = ? AND `entity_id` = ?',
             $tblUrlRewrite
         );
-        $urlRewrites = $this->conn->fetchAll($sql, ['content/article/view', $modArticle->getId()]);
+        $urlRewrites = $this->conn->fetchAll($sql, ['content/article/view', $model->getId()]);
         foreach ($urlRewrites as $urlRewrite) {
             $orgUrlRewriteData[$urlRewrite['stage_id'] . '-' . $urlRewrite['request_path']] = $urlRewrite;
         }
 
         $newUrlRewriteData = [];
         foreach ($stageIds as $stageId) {
-            $newUrlRewriteData[$stageId . '-' . $modArticle->getData('identifier')] = [
+            $newUrlRewriteData[$stageId . '-' . $model->getData('identifier')] = [
                 'stage_id'     => $stageId,
-                'request_path' => $modArticle->getData('identifier'),
+                'request_path' => $model->getData('identifier'),
                 'target_path'  => 'content/article/view',
-                'entity_id'    => $modArticle->getId(),
+                'entity_id'    => $model->getId(),
                 'params'       => null
             ];
         }
-        if ($modArticle->hasData('category_ids')) {
-            $categoryIds = explode(',', $modArticle->getData('category_ids'));
+        if ($model->hasData('category_ids')) {
+            $categoryIds = explode(',', $model->getData('category_ids'));
         }
         if (!empty($categoryIds)) {
             $sql = sprintf(
@@ -98,13 +95,13 @@ class UpdateArticleUrlRewrites
                             },
                             explode('/', $categoryPath)
                         )
-                    ) . '/' . $modArticle->getData('identifier');
+                    ) . '/' . $model->getData('identifier');
                 foreach ($stageIds as $stageId) {
                     $newUrlRewriteData[$stageId . '-' . $requestPath] = [
                         'stage_id'     => $stageId,
                         'request_path' => $requestPath,
                         'target_path'  => 'content/article/view',
-                        'entity_id'    => $modArticle->getId(),
+                        'entity_id'    => $model->getId(),
                         'params'       => json_encode(['cid' => $categoryId])
                     ];
                 }
