@@ -15,24 +15,26 @@ return [
     'template' => '2columns_left',
     'blocks'   => [
         'header' => [
-            'header-buttons' => [
-                'class' => 'CrazyCat\Base\Block\Template',
-                'data'  => [
-                    'template' => 'CrazyCat\Base::header_buttons',
-                    'buttons'  => [
-                        'back'          => [
-                            'label'  => __('Back'),
-                            'action' => ['type' => 'redirect', 'params' => ['url' => getUrl('content/article')]]
-                        ],
-                        'save'          => [
-                            'label'  => __('Save'),
-                            'action' => ['type' => 'save', 'params' => ['target' => '#edit-form']]
-                        ],
-                        'save_continue' => [
-                            'label'  => __('Save and Continue'),
-                            'action' => [
-                                'type'   => 'saveContinue',
-                                'params' => ['target' => '#edit-form']
+            'children' => [
+                'header-buttons' => [
+                    'class' => 'CrazyCat\Base\Block\Template',
+                    'data'  => [
+                        'template' => 'CrazyCat\Base::header_buttons',
+                        'buttons'  => [
+                            'back'          => [
+                                'label'  => __('Back'),
+                                'action' => ['type' => 'redirect', 'params' => ['url' => getUrl('content/article')]]
+                            ],
+                            'save'          => [
+                                'label'  => __('Save'),
+                                'action' => ['type' => 'save', 'params' => ['target' => '#edit-form']]
+                            ],
+                            'save_continue' => [
+                                'label'  => __('Save and Continue'),
+                                'action' => [
+                                    'type'   => 'saveContinue',
+                                    'params' => ['target' => '#edit-form']
+                                ]
                             ]
                         ]
                     ]
@@ -40,8 +42,10 @@ return [
             ]
         ],
         'main'   => [
-            'edit-form' => [
-                'class' => 'CrazyCat\Content\Block\Backend\Article\Edit'
+            'children' => [
+                'edit-form' => [
+                    'class' => 'CrazyCat\Content\Block\Backend\Article\Edit'
+                ]
             ]
         ]
     ]
