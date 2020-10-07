@@ -33,7 +33,7 @@ class View extends \CrazyCat\Framework\App\Component\Module\Controller\Frontend\
         if (!$model->getId()) {
         }
 
-        $this->registry->register('current_article', $model);
+        $this->registry->register('current_category', $model);
 
         $this->setPageTitle($model->getData('name'))
             ->setMetaDescription($model->getData('meta_description'))

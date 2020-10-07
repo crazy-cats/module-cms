@@ -14,11 +14,11 @@
 return [
     'template' => '1column',
     'blocks'   => [
-        'main'         => [
-            'category' => ['class' => 'CrazyCat\Content\Block\Article\Category']
-        ],
-        'article_list' => [
-            'articles' => ['class' => 'CrazyCat\Content\Block\Article\Grid']
+        'main' => [
+            'children' => [
+                'category' => ['class' => 'CrazyCat\Content\Block\Article\Category'],
+                'articles' => ['class' => 'CrazyCat\Content\Block\Article\Grid']
+            ]
         ]
     ]
 ];
