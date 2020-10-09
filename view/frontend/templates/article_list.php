@@ -8,9 +8,15 @@
 $articles = $this->getArticles();
 ?>
 <div class="articles">
-    <?php foreach ($articles as $article) : ?>
-        <div class="article">
-            <h3><?= $article->getData('title'); ?></h3>
+    <?php if ($articles): ?>
+        <?php foreach ($articles as $article) : ?>
+            <div class="article">
+                <h3><?= $article->getData('title'); ?></h3>
+            </div>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <div class="no-item">
+            <?= __('No matched item found.') ?>
         </div>
-    <?php endforeach; ?>
+    <?php endif; ?>
 </div>
