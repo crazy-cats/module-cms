@@ -7,7 +7,7 @@
 
 namespace CrazyCat\Content\Controller\Backend\Menu;
 
-use CrazyCat\Content\Model\Article\Category\Collection;
+use CrazyCat\Content\Model\Article\Collection;
 use CrazyCat\Base\Model\Source\Stage as SourceStage;
 use CrazyCat\Base\Model\Source\YesNo as SourceYesNo;
 
@@ -17,10 +17,10 @@ use CrazyCat\Base\Model\Source\YesNo as SourceYesNo;
  * @author   Liwei Zeng <zengliwei@163.com>
  * @link     https://crazy-cat.cn
  */
-class ArticleCategories extends \CrazyCat\Menu\Controller\Backend\ItemType\AbstractGridAction
+class Articles extends \CrazyCat\Menu\Controller\Backend\ItemType\AbstractGridAction
 {
     /**
-     * @var \CrazyCat\Content\Model\Article\Category\Collection
+     * @var \CrazyCat\Content\Model\Article\Collection
      */
     protected $collection;
 
@@ -38,8 +38,8 @@ class ArticleCategories extends \CrazyCat\Menu\Controller\Backend\ItemType\Abstr
     {
         $this->fields = [
             [
-                'name'   => 'name',
-                'label'  => __('Category Name'),
+                'name'   => 'title',
+                'label'  => __('Article Title'),
                 'sort'   => true,
                 'filter' => ['type' => 'text', 'condition' => 'like']
             ],

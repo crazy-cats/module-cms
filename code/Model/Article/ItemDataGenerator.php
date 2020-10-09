@@ -5,9 +5,9 @@
  * See COPYRIGHT.txt for license details.
  */
 
-namespace CrazyCat\Content\Model\Article\Category;
+namespace CrazyCat\Content\Model\Article;
 
-use CrazyCat\Content\Model\Article\Category\Collection as CategoryCollection;
+use CrazyCat\Content\Model\Article\Collection as CategoryCollection;
 use CrazyCat\Framework\Data\DataObject;
 use CrazyCat\Framework\Utility\StaticVariable;
 use CrazyCat\Menu\Model\Menu\Item as MenuItem;
@@ -34,10 +34,10 @@ class ItemDataGenerator extends \CrazyCat\Menu\Model\ItemDataGenerator
 
         $items = [];
         foreach ($collection as $item) {
-            $url = $this->url->getUrl('content/article_category/view', ['id' => $item->getId()]);
+            $url = $this->url->getUrl('content/article/view', ['id' => $item->getId()]);
             $items[] = new DataObject(
                 [
-                    'title'      => $item->getData('name'),
+                    'title'      => $item->getData('title'),
                     'url'        => $url,
                     'is_current' => $this->url->isCurrent($url),
                     'level'      => $menuItem->getData('level')
